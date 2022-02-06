@@ -7,13 +7,15 @@ import Amplify from "aws-amplify";
 import config from "./src/aws-exports";
 Amplify.configure(config);
 
-import HomeScreen from "./screens/HomeScreen/HomeScreen";
+import Header from "./components/Header";
+import AdminScreen from "./screens/AdminScreen/AdminScreen";
 import { SafeAreaView } from "react-native-web";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <HomeScreen />
+      <Header />
+      <AdminScreen />
       <StatusBar style="auto" />
     </View>
   );
@@ -22,8 +24,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#d4ffc7",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-start",
   },
 });
