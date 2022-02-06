@@ -10,12 +10,12 @@ import {
 } from "react-native-paper";
 import { DataStore } from "aws-amplify";
 import { Training } from "../../src/models";
+import InstructorList from "../InstructorList";
 
 export default function AddTrainingForm() {
   [name, setName] = useState("");
   [instructor, setInstructor] = useState("");
   const [visible, setVisible] = useState(false);
-  const [checked, setChecked] = useState(false);
 
   const toggleModal = () => setVisible(!visible);
 
@@ -45,13 +45,8 @@ export default function AddTrainingForm() {
           onDismiss={toggleModal}
           contentContainerStyle={containerStyle}
         >
-          <Text>Example Modal. Click outside this area to dismiss.</Text>
-          <Checkbox
-            status={checked ? "checked" : "unchecked"}
-            onPress={() => {
-              setChecked(!checked);
-            }}
-          />
+          <Text>Select from the list of instructors</Text>
+          <InstructorList />
         </Modal>
       </Portal>
       <View>
