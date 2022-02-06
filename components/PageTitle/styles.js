@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
   titleContainer: {
     width: "100%",
     marginTop: "25%",
-    alignItems: "center",
+    alignItems: "flex-start",
   },
   title: {
     fontSize: 20,

@@ -1,6 +1,7 @@
 import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
+import { Provider } from "react-native-paper";
 
 // Amplify
 import Amplify from "aws-amplify";
@@ -10,22 +11,18 @@ Amplify.configure(config);
 import Header from "./components/Header";
 import AdminScreen from "./screens/AdminScreen/AdminScreen";
 import { SafeAreaView } from "react-native-web";
+import styles from "./styles";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Header />
-      <AdminScreen />
-      <StatusBar style="auto" />
-    </View>
+    <Provider>
+      <View style={styles.appContainer}>
+        <Header />
+        <View style={styles.siteContainer}>
+          <AdminScreen />
+          <StatusBar style="auto" />
+        </View>
+      </View>
+    </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#d4ffc7",
-    alignItems: "center",
-    justifyContent: "flex-start",
-  },
-});

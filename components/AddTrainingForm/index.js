@@ -1,11 +1,23 @@
 import React, { useState, useCallback } from "react";
-import { Text, View, TextInput, TouchableOpacity } from "react-native";
+import { View, TouchableOpacity } from "react-native";
+import {
+  TextInput,
+  Button,
+  Modal,
+  Portal,
+  Text,
+  Checkbox,
+} from "react-native-paper";
 import { DataStore } from "aws-amplify";
 import { Training } from "../../src/models";
 
 export default function AddTrainingForm() {
   [name, setName] = useState("");
   [instructor, setInstructor] = useState("");
+  const [visible, setVisible] = useState(false);
+  const [checked, setChecked] = useState(false);
+
+  const toggleModal = () => setVisible(!visible);
 
   const handleSaveClick = useCallback(async () => {
     const save = await DataStore.save(
@@ -17,21 +29,49 @@ export default function AddTrainingForm() {
     console.log(save);
   }, []);
 
+  function handleSelectInstructorClick() {
+    toggleModal();
+    console.log("Instructor button clicked");
+  }
+
+  const showModal = () => setVisible(true);
+  const hideModal = () => setVisible(false);
+  const containerStyle = { backgroundColor: "white", padding: 20 };
   return (
     <View>
-      <TextInput
-        placeholder="Training Name"
-        onChangeText={setName}
-        value={name}
-      />
-      <TextInput
-        placeholder="Instructor"
-        onChangeText={setInstructor}
-        value={instructor}
-      />
-      <TouchableOpacity onPress={handleSaveClick}>
-        <Text>Save</Text>
-      </TouchableOpacity>
+      <Portal>
+        <Modal
+          visible={visible}
+          onDismiss={toggleModal}
+          contentContainerStyle={containerStyle}
+        >
+          <Text>Example Modal. Click outside this area to dismiss.</Text>
+          <Checkbox
+            status={checked ? "checked" : "unchecked"}
+            onPress={() => {
+              setChecked(!checked);
+            }}
+          />
+        </Modal>
+      </Portal>
+      <View>
+        <TextInput
+          placeholder="Enter training name here..."
+          onChangeText={setName}
+          value={name}
+        />
+        <Button onPress={handleSelectInstructorClick}>
+          <Text>Select Instructor</Text>
+        </Button>
+        <TextInput
+          placeholder="Instructor"
+          onChangeText={setInstructor}
+          value={instructor}
+        />
+        <Button onPress={handleSaveClick}>
+          <Text>Save</Text>
+        </Button>
+      </View>
     </View>
   );
 }

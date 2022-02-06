@@ -1,7 +1,9 @@
 import React, { useState, useCallback, useEffect } from "react";
-import { Text, View, TextInput, TouchableOpacity } from "react-native";
+import { View } from "react-native";
+import { Text } from "react-native-paper";
 import { DataStore } from "aws-amplify";
 import { Training } from "../../src/models";
+import { Provider } from "react-native-paper";
 
 export default function TrainingList() {
   [trainings, setTrainings] = useState([]);

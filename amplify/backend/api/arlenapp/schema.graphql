@@ -7,3 +7,9 @@ type Training @model {
   name: String!
   instructor: String
 }
+
+type Instructor @model {
+  id: ID!
+  fName: String!
+  lName: String!
+}
