@@ -12,17 +12,14 @@ import { DataStore } from "aws-amplify";
 import { Training } from "../../src/models";
 import Instructor from "../Instructor";
 
-export default function InstructorList() {
+export default function InstructorList(props) {
   const instructors = [
     { id: 1, name: "Dom Schweyer" },
     { id: 2, name: "Pastor Arlen" },
     { id: 3, name: "Ludmilla Parnell" },
   ];
-  [selected, setSelected] = useState([]);
+  const { selected, setSelected } = props;
 
-  useEffect(() => {
-    console.log(selected);
-  }, [selected]);
   return (
     <View>
       {instructors.map((instructor) => {

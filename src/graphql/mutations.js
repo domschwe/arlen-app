@@ -43,3 +43,45 @@ export const deleteTraining = /* GraphQL */ `
     }
   }
 `;
+export const createInstructor = /* GraphQL */ `
+  mutation CreateInstructor(
+    $input: CreateInstructorInput!
+    $condition: ModelInstructorConditionInput
+  ) {
+    createInstructor(input: $input, condition: $condition) {
+      id
+      fName
+      lName
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateInstructor = /* GraphQL */ `
+  mutation UpdateInstructor(
+    $input: UpdateInstructorInput!
+    $condition: ModelInstructorConditionInput
+  ) {
+    updateInstructor(input: $input, condition: $condition) {
+      id
+      fName
+      lName
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteInstructor = /* GraphQL */ `
+  mutation DeleteInstructor(
+    $input: DeleteInstructorInput!
+    $condition: ModelInstructorConditionInput
+  ) {
+    deleteInstructor(input: $input, condition: $condition) {
+      id
+      fName
+      lName
+      createdAt
+      updatedAt
+    }
+  }
+`;

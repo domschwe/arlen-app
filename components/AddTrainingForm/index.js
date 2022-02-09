@@ -15,7 +15,8 @@ import InstructorList from "../InstructorList";
 export default function AddTrainingForm() {
   [name, setName] = useState("");
   [instructor, setInstructor] = useState("");
-  const [visible, setVisible] = useState(false);
+  [selected, setSelected] = useState([]);
+  [visible, setVisible] = useState(false);
 
   const toggleModal = () => setVisible(!visible);
 
@@ -23,7 +24,7 @@ export default function AddTrainingForm() {
     const save = await DataStore.save(
       new Training({
         name: name,
-        instructor: instructor,
+        instructor: selected,
       })
     );
     console.log(save);
@@ -34,8 +35,6 @@ export default function AddTrainingForm() {
     console.log("Instructor button clicked");
   }
 
-  const showModal = () => setVisible(true);
-  const hideModal = () => setVisible(false);
   const containerStyle = { backgroundColor: "white", padding: 20 };
   return (
     <View>
@@ -46,7 +45,7 @@ export default function AddTrainingForm() {
           contentContainerStyle={containerStyle}
         >
           <Text>Select from the list of instructors</Text>
-          <InstructorList />
+          <InstructorList selected={selected} setSelected={setSelected} />
         </Modal>
       </Portal>
       <View>
@@ -55,16 +54,22 @@ export default function AddTrainingForm() {
           onChangeText={setName}
           value={name}
         />
-        <Button onPress={handleSelectInstructorClick}>
+        <Button onPress={handleSelectInstructorClick} style="">
           <Text>Select Instructor</Text>
         </Button>
-        <TextInput
-          placeholder="Instructor"
-          onChangeText={setInstructor}
-          value={instructor}
-        />
+        <Text>Selected Instructors:</Text>
+        {selected.map((item) => {
+          return <Text>{item}</Text>;
+        })}
         <Button onPress={handleSaveClick}>
           <Text>Save</Text>
+        </Button>
+        <Button
+          onPress={async () => {
+            await DataStore.clear();
+          }}
+        >
+          <Text>Clear Local Data</Text>
         </Button>
       </View>
     </View>

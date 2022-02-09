@@ -30,3 +30,32 @@ export const listTrainings = /* GraphQL */ `
     }
   }
 `;
+export const getInstructor = /* GraphQL */ `
+  query GetInstructor($id: ID!) {
+    getInstructor(id: $id) {
+      id
+      fName
+      lName
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listInstructors = /* GraphQL */ `
+  query ListInstructors(
+    $filter: ModelInstructorFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listInstructors(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        fName
+        lName
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;

@@ -34,3 +34,36 @@ export const onDeleteTraining = /* GraphQL */ `
     }
   }
 `;
+export const onCreateInstructor = /* GraphQL */ `
+  subscription OnCreateInstructor {
+    onCreateInstructor {
+      id
+      fName
+      lName
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateInstructor = /* GraphQL */ `
+  subscription OnUpdateInstructor {
+    onUpdateInstructor {
+      id
+      fName
+      lName
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteInstructor = /* GraphQL */ `
+  subscription OnDeleteInstructor {
+    onDeleteInstructor {
+      id
+      fName
+      lName
+      createdAt
+      updatedAt
+    }
+  }
+`;

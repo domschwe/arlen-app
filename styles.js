@@ -1,4 +1,5 @@
 import { StyleSheet, Dimensions } from "react-native";
+import { DefaultTheme, Provider as PaperProvider } from "react-native-paper";
 
 export default styles = StyleSheet.create({
   appContainer: {
@@ -11,5 +12,9 @@ export default styles = StyleSheet.create({
   siteContainer: {
     width: "100%",
     padding: 20,
+  },
+
+  button: {
+    backgroundColor: "#668009",
   },
 });
