@@ -7,14 +7,12 @@ import PageTitle from "../../components/PageTitle";
 export default function AdminScreen() {
   return (
     <View>
-      <ScrollView>
-        <PageTitle
-          title="Add a New Training"
-          subtitle="Enter information into the form below"
-        />
-        <AddTrainingForm />
-        <TrainingList />
-      </ScrollView>
+      <PageTitle
+        title="Add a New Training"
+        subtitle="Enter information into the form below"
+      />
+      <AddTrainingForm />
+      <TrainingList />
     </View>
   );
 }

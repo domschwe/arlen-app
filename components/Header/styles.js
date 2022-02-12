@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     paddingLeft: 0,
     paddingRight: 20,
     paddingTop: 50,
-    backgroundColor: "#d4ffc7",
+    backgroundColor: "#a4ffc7",
   },
   logo: {
     width: 100,

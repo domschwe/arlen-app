@@ -1,9 +1,10 @@
 import React from "react";
-export default function HomeScreen(navigation) {
+import { View, Button, Text } from "react-native";
+
+export default function HomeScreen({ navigation }) {
   return (
-    <Button
-      title="Go to your courses"
-      onPress={() => navigation.navigate("Profile", { name: "Jane" })}
-    />
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      <Text>This site helps you track which trainings are run by Pastor Arlen and his team.</Text>
+    </View>
   );
 }
