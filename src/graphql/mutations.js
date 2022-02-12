@@ -9,9 +9,26 @@ export const createTraining = /* GraphQL */ `
     createTraining(input: $input, condition: $condition) {
       id
       name
-      instructor
+      instructors {
+        items {
+          id
+          trainingID
+          instructorID
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
+      date
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;
@@ -23,9 +40,26 @@ export const updateTraining = /* GraphQL */ `
     updateTraining(input: $input, condition: $condition) {
       id
       name
-      instructor
+      instructors {
+        items {
+          id
+          trainingID
+          instructorID
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
+      date
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;
@@ -37,9 +71,26 @@ export const deleteTraining = /* GraphQL */ `
     deleteTraining(input: $input, condition: $condition) {
       id
       name
-      instructor
+      instructors {
+        items {
+          id
+          trainingID
+          instructorID
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
+      date
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;
@@ -52,8 +103,25 @@ export const createInstructor = /* GraphQL */ `
       id
       fName
       lName
+      trainings {
+        items {
+          id
+          trainingID
+          instructorID
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;
@@ -66,8 +134,25 @@ export const updateInstructor = /* GraphQL */ `
       id
       fName
       lName
+      trainings {
+        items {
+          id
+          trainingID
+          instructorID
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;
@@ -80,8 +165,160 @@ export const deleteInstructor = /* GraphQL */ `
       id
       fName
       lName
+      trainings {
+        items {
+          id
+          trainingID
+          instructorID
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const createTrainingOwner = /* GraphQL */ `
+  mutation CreateTrainingOwner(
+    $input: CreateTrainingOwnerInput!
+    $condition: ModelTrainingOwnerConditionInput
+  ) {
+    createTrainingOwner(input: $input, condition: $condition) {
+      id
+      trainingID
+      instructorID
+      training {
+        id
+        name
+        instructors {
+          nextToken
+          startedAt
+        }
+        date
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      instructor {
+        id
+        fName
+        lName
+        trainings {
+          nextToken
+          startedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const updateTrainingOwner = /* GraphQL */ `
+  mutation UpdateTrainingOwner(
+    $input: UpdateTrainingOwnerInput!
+    $condition: ModelTrainingOwnerConditionInput
+  ) {
+    updateTrainingOwner(input: $input, condition: $condition) {
+      id
+      trainingID
+      instructorID
+      training {
+        id
+        name
+        instructors {
+          nextToken
+          startedAt
+        }
+        date
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      instructor {
+        id
+        fName
+        lName
+        trainings {
+          nextToken
+          startedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const deleteTrainingOwner = /* GraphQL */ `
+  mutation DeleteTrainingOwner(
+    $input: DeleteTrainingOwnerInput!
+    $condition: ModelTrainingOwnerConditionInput
+  ) {
+    deleteTrainingOwner(input: $input, condition: $condition) {
+      id
+      trainingID
+      instructorID
+      training {
+        id
+        name
+        instructors {
+          nextToken
+          startedAt
+        }
+        date
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      instructor {
+        id
+        fName
+        lName
+        trainings {
+          nextToken
+          startedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;

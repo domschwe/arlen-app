@@ -5,12 +5,14 @@ input AMPLIFY {
 type Training @model {
   id: ID!
   name: String!
-  instructor: [String]
+  instructors: [Instructor] @manyToMany(relationName: "TrainingOwner")
+  date: AWSDateTime
 }
 
 type Instructor @model {
   id: ID!
   fName: String!
   lName: String!
+  trainings: [Training] @manyToMany(relationName: "TrainingOwner")
 }
  

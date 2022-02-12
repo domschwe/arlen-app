@@ -17,13 +17,26 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "instructor": {
-                    "name": "instructor",
+                "instructors": {
+                    "name": "instructors",
                     "isArray": true,
-                    "type": "String",
+                    "type": {
+                        "model": "TrainingOwner"
+                    },
                     "isRequired": false,
                     "attributes": [],
-                    "isArrayNullable": true
+                    "isArrayNullable": true,
+                    "association": {
+                        "connectionType": "HAS_MANY",
+                        "associatedWith": "training"
+                    }
+                },
+                "date": {
+                    "name": "date",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": []
                 },
                 "createdAt": {
                     "name": "createdAt",
@@ -75,6 +88,20 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
+                "trainings": {
+                    "name": "trainings",
+                    "isArray": true,
+                    "type": {
+                        "model": "TrainingOwner"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true,
+                    "association": {
+                        "connectionType": "HAS_MANY",
+                        "associatedWith": "instructor"
+                    }
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -100,9 +127,71 @@ export const schema = {
                     "properties": {}
                 }
             ]
+        },
+        "TrainingOwner": {
+            "name": "TrainingOwner",
+            "fields": {
+                "id": {
+                    "name": "id",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "training": {
+                    "name": "training",
+                    "isArray": false,
+                    "type": {
+                        "model": "Training"
+                    },
+                    "isRequired": true,
+                    "attributes": [],
+                    "association": {
+                        "connectionType": "BELONGS_TO",
+                        "targetName": "trainingID"
+                    }
+                },
+                "instructor": {
+                    "name": "instructor",
+                    "isArray": false,
+                    "type": {
+                        "model": "Instructor"
+                    },
+                    "isRequired": true,
+                    "attributes": [],
+                    "association": {
+                        "connectionType": "BELONGS_TO",
+                        "targetName": "instructorID"
+                    }
+                },
+                "createdAt": {
+                    "name": "createdAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                },
+                "updatedAt": {
+                    "name": "updatedAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                }
+            },
+            "syncable": true,
+            "pluralName": "TrainingOwners",
+            "attributes": [
+                {
+                    "type": "model",
+                    "properties": {}
+                }
+            ]
         }
     },
     "enums": {},
     "nonModels": {},
-    "version": "30055241ce25caf2149f2a89771184b4"
+    "version": "ab36a7a2c424ff5a0985bb20d45b8b4f"
 };

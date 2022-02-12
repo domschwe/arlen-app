@@ -1,4 +1,5 @@
 import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import { Provider } from "react-native-paper";
@@ -10,6 +11,8 @@ Amplify.configure(config);
 
 import Header from "./components/Header";
 import AdminScreen from "./screens/AdminScreen/AdminScreen";
+import HomeScreen from "./screens/HomeScreen";
+
 import { SafeAreaView } from "react-native-web";
 import styles from "./styles";
 
@@ -18,8 +21,24 @@ export default function App() {
     <Provider>
       <View style={styles.appContainer}>
         <Header />
+
+        <NavigationContainer>
+          <Stack.Navigator>
+            <Stack.Screen
+              name="Home"
+              component={HomeScreen}
+              options={{ title: "Welcome" }}
+            />
+
+            <Stack.Screen
+              name="Instructors"
+              component={AdminScreen}
+              options={{ title: "Instructors" }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+
         <View style={styles.siteContainer}>
-          <AdminScreen />
           <StatusBar style="auto" />
         </View>
       </View>

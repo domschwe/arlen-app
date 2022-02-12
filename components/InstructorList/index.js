@@ -13,11 +13,19 @@ import { Training } from "../../src/models";
 import Instructor from "../Instructor";
 
 export default function InstructorList(props) {
-  const instructors = [
-    { id: 1, name: "Dom Schweyer" },
-    { id: 2, name: "Pastor Arlen" },
-    { id: 3, name: "Ludmilla Parnell" },
-  ];
+  // Get All Instructors
+  [instructors, setInstructors] = useState([]);
+  useEffect(() => {
+    const subInstructors = DataStore.observeQuery(Instructor).subscribe({
+      next: ({ items, isSynced }) => {
+        setInstructors(items);
+        console.log(instructors);
+      },
+    });
+
+    return () => subInstructors.unsubscribe();
+  }, []);
+
   const { selected, setSelected } = props;
 
   return (
